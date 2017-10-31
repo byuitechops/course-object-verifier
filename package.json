@@ -1,0 +1,22 @@
+{
+  "name": "course-object-verifier",
+  "version": "1.0.0",
+  "description": "Verifies a course object. Used in our conversion tool for Canvas.",
+  "main": "verify.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/byuitechops/course-object-verifier.git"
+  },
+  "author": "Zachary Williams, Daniel Green",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/byuitechops/course-object-verifier/issues"
+  },
+  "homepage": "https://github.com/byuitechops/course-object-verifier#readme",
+  "dependencies": {
+    "chalk": "^2.3.0"
+  }
+}
