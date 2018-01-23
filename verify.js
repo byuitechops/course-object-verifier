@@ -4,7 +4,7 @@ const chalk = require('chalk');
 
 module.exports = (courseObj, callback) => {
     const standardProperties = [
-        'report',
+        'logs',
         'settings',
         'info',
         'content'
