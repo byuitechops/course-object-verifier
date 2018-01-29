@@ -11,10 +11,10 @@ module.exports = (courseObj, callback) => {
     ];
 
     const standardInfoProperties = [
-        'originalFilepath',
-        'unzippedFilepath',
-        'altUnzippedFilepath',
-        'zippedFilepath',
+        'originalZipPath',
+        'unzippedPath',
+        'processedPath',
+        'uploadZipPath',
         'fileName'
     ];
 
