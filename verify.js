@@ -1,6 +1,6 @@
 /*eslint-env node, es6*/
 
-const chalk = require('chalk');
+//const chalk = require('chalk');
 
 module.exports = (courseObj, callback) => {
     const standardProperties = [
@@ -25,60 +25,43 @@ module.exports = (courseObj, callback) => {
         'keepFiles',
         'deleteCourse'
     ];
-
-    var foundErr = false;
+    var error = null;
 
     /* Check if courses top level contains the standard properties */
-    if (!foundErr) {
-        standardProperties.forEach((property) => {
-            if (!Object.keys(courseObj).includes(property)) {
-                callback(`Course object missing property: ${property}`, courseObj);
-                foundErr = true;
-                return false;
-            }
-        });
-    } else {
-        return;
-    }
+    standardProperties.forEach((property) => {
+        if (!Object.keys(courseObj).includes(property)) {
+            error = new Error(`Course object missing property: ${property}`);
+        }
+    });
 
     /* Check if Info contains the standard properties */
-    if (!foundErr) {
+    if (error == null) {
         standardInfoProperties.forEach((property) => {
             if (!Object.keys(courseObj.info).includes(property)) {
-                callback(`Course Info missing property: ${property}`, courseObj);
-                foundErr = true;
-                return false;
+                error = new Error(`Course Info missing property: ${property}`);
             }
         });
-    } else {
-        return;
     }
 
     /* Check if Settings contains the standard properties */
-    if (!foundErr) {
+    if (error == null) {
         standardSettingsProperties.forEach((property) => {
             if (!Object.keys(courseObj.settings).includes(property)) {
-                callback(`Course Settings missing property: ${property}`, courseObj);
-                foundErr = true;
-                return false;
+                error = new Error(`Course Settings missing property: ${property}`);
             }
         });
-    } else {
-        return;
     }
 
     /* Check if object contains extra properties */
-    if (!foundErr) {
+    if (error == null) {
         if (Object.keys(courseObj).length > standardProperties.length ||
             Object.keys(courseObj.settings).length > standardSettingsProperties.length) {
-            foundErr = true;
-            callback(`Course object provided contains extra properties it should not have`, courseObj);
-            return false;
+            error = new Error('Course object provided contains extra properties it should not have');
         }
-    } else {
-        return;
+    }
+    if (error == null) {
+        courseObj.message('Course Object successfully verified!');
     }
 
-    courseObj.message('Course Object successfully verified!');
-    callback(null, courseObj);
+    callback(error, courseObj);
 };
