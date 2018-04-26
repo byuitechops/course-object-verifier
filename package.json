@@ -16,7 +16,5 @@
     "url": "https://github.com/byuitechops/course-object-verifier/issues"
   },
   "homepage": "https://github.com/byuitechops/course-object-verifier#readme",
-  "dependencies": {
-    "chalk": "^2.3.0"
-  }
+  "dependencies": {}
 }
